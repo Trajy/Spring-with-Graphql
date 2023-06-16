@@ -15,6 +15,7 @@
 	<description>project to study graphql</description>
 	<properties>
 		<java.version>11</java.version>
+		<spring.cloud-version>2021.0.5</spring.cloud-version>
 	</properties>
 	<dependencies>
 		<!-- Spring MVC -->
@@ -68,26 +69,21 @@
 
 		<!-- GraphQL -->
 		<dependency>
-			<groupId>com.graphql-java</groupId>
-			<artifactId>graphql-java-tools</artifactId>
-			<version>5.2.4</version>
-		</dependency>
-		<dependency>
-			<groupId>com.graphql-java</groupId>
-			<artifactId>graphql-spring-boot-starter</artifactId>
-			<version>5.0.2</version>
-		</dependency>
-		<dependency>
-			<groupId>com.graphql-java</groupId>
-			<artifactId>graphql-spring-boot-test</artifactId>
-			<version>5.0.2</version>
-		</dependency>
-		<dependency>
-			<groupId>com.graphql-java</groupId>
-			<artifactId>graphiql-spring-boot-starter</artifactId>
-			<version>5.0.2</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-graphql</artifactId>
 		</dependency>
 	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring.cloud-version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<build>
 		<plugins>
 			<plugin>
