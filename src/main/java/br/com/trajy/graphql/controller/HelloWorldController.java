@@ -9,6 +9,6 @@ public class HelloWorldController {
 
     @QueryMapping
     public String helloWorld() {
-        return ResponseEntity.ok("hello").getBody();
+        return ResponseEntity.ok("hello GraphQl").getBody();
     }
 }
