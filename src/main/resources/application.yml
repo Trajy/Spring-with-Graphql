@@ -3,6 +3,13 @@ spring:
   application:
     name: graphql-trajy
   graphql:
+    url: /graphql
     graphiql:
       enabled: true
-      path: /graphiql
+      path: ${spring.graphql.url}
+  playground:
+    mapping: /playground
+    endpoint: ${spring.graphql.url}
+    settings:
+      editor:
+        theme: dark
