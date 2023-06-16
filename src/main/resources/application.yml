@@ -2,3 +2,7 @@
 spring:
   application:
     name: graphql-trajy
+  graphql:
+    graphiql:
+      enabled: true
+      path: /graphiql
