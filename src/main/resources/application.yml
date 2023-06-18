@@ -13,3 +13,15 @@ spring:
     settings:
       editor:
         theme: dark
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  datasource:
+    url: jdbc:h2:mem:jdbc:h2://localhost:8080/h2
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
