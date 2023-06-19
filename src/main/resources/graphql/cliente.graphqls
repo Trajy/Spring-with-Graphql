@@ -1,0 +1,15 @@
+extend type Query {
+    clienteController: ClienteController
+}
+
+type ClienteController {
+    cliente: Cliente
+    test: Cliente
+}
+
+type Cliente {
+    id: ID
+    nome: String
+    documento: String
+    pedidos: [Pedido]
+}

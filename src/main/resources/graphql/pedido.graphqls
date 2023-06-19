@@ -1,0 +1,10 @@
+extend type Query {
+    pedido(id: ID): Pedido
+}
+
+type Pedido {
+    id: ID
+    codigo: String
+    cliente: Cliente
+    produtos: [Produto]
+}
