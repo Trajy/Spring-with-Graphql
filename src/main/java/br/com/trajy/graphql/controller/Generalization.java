@@ -11,4 +11,9 @@ public class Generalization {
         cliente.setNome("Olha");
         return cliente;
     }
+
+    @SchemaMapping(typeName = "Cliente")
+    public String documento(Cliente c) {
+        return "Documento Testado";
+    }
 }
