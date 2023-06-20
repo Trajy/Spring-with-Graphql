@@ -1,4 +1,4 @@
-package br.com.trajy.graphql.model;
+package br.com.trajy.graphql.model.output;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 import static javax.persistence.CascadeType.ALL;
