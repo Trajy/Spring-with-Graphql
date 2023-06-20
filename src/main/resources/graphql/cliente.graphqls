@@ -1,10 +1,16 @@
 extend type Query {
-    clienteController: ClienteController
+    clienteController: ClienteController!
+}
+
+extend type Mutation {
+    clienteController: ClienteController!
 }
 
 type ClienteController {
-    cliente: Cliente
-    test: Cliente
+    findById(id: ID!): Cliente
+    save(cliente: ClienteInput!): ID!
+    update(cliente: ClienteInput!): Cliente
+    delete(id: ID!): Boolean
 }
 
 type Cliente {
@@ -12,4 +18,11 @@ type Cliente {
     nome: String
     documento: String
     pedidos: [Pedido]
+}
+
+input ClienteInput {
+    id: ID
+    nome: String
+    documento: String
+    pedidos: [PedidoInput]
 }

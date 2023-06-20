@@ -8,3 +8,10 @@ type Pedido {
     cliente: Cliente
     produtos: [Produto]
 }
+
+input PedidoInput {
+    id: ID
+    codigo: String
+    cliente: ClienteInput!
+    produtos: [ProdutoInput]
+}

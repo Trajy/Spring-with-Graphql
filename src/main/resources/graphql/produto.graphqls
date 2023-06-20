@@ -8,3 +8,10 @@ type Produto {
     preco: Float
     pedidos: [Pedido]
 }
+
+input ProdutoInput {
+    id: ID
+    nome: String
+    preco: Float
+    pedidos: [PedidoInput]
+}
