@@ -1,6 +1,6 @@
 package br.com.trajy.graphql.controller;
 
-import br.com.trajy.graphql.model.Pedido;
+import br.com.trajy.graphql.model.output.Pedido;
 import br.com.trajy.graphql.repository.PedidoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Argument;
