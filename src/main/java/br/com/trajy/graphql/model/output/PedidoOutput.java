@@ -18,7 +18,7 @@ import java.util.List;
 @Data
 @JsonInclude(NON_NULL)
 @Entity
-public class Pedido {
+public class PedidoOutput {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -28,7 +28,7 @@ public class Pedido {
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
+    private ClienteOutput cliente;
 
     @ManyToMany(cascade = ALL)
     @JoinTable(
@@ -42,6 +42,6 @@ public class Pedido {
                     referencedColumnName = "id"
             )
     )
-    private List<Produto> produtos;
+    private List<ProdutoOutput> produtos;
 
 }
