@@ -105,7 +105,6 @@
 			<plugin>
 				<groupId>io.github.deweyjose</groupId>
 				<artifactId>graphqlcodegen-maven-plugin</artifactId>
-				<version>1.18</version>
 				<executions>
 					<execution>
 						<goals>
@@ -115,9 +114,10 @@
 				</executions>
 				<configuration>
 					<schemaPaths>
-						<param>src/main/resources/schema/*-model.graphqls</param>
+						<param>src/main/resources/schema/model/</param>
 					</schemaPaths>
-					<packageName>${project.groupId}.graphql.types</packageName>
+					<packageName>${project.groupId}.graphql</packageName>
+					<snakeCaseConstantNames>true</snakeCaseConstantNames>
 				</configuration>
 			</plugin>
 		</plugins>
