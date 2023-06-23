@@ -1,0 +1,6 @@
+type Cliente {
+    id: ID
+    nome: String
+    documento: String
+    pedidos: [Pedido]
+}

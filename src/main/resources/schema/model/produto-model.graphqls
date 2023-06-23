@@ -1,0 +1,6 @@
+type Produto {
+    id: ID
+    nome: String
+    preco: Float
+    pedidos: [Pedido]
+}

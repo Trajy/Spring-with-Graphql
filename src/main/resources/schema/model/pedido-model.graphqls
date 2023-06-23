@@ -1,0 +1,6 @@
+type Pedido {
+    id: ID
+    codigo: String
+    cliente: Cliente
+    produtos: [Produto]
+}
