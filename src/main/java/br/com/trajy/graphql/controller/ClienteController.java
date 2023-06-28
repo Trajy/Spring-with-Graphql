@@ -14,6 +14,7 @@ import com.netflix.graphql.dgs.InputArgument;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 
 @DgsComponent
 @Controller
@@ -24,13 +25,15 @@ public class ClienteController {
     private final ClienteRepository repository;
 
     @DgsData(parentType = "ClienteController")
+    @Transactional
     public Cliente findById(@InputArgument String id) {
+
         return modelMapper.map(this.repository.findById(valueOf(id)).orElse(null), Cliente.class);
     }
 
     @DgsData(parentType = "ClienteController")
+    @Transactional
     public Long save(@InputArgument Cliente cliente) {
-
         return this.repository.save(modelMapper.map(cliente, ClienteInput.class)).getId();
     }
 
