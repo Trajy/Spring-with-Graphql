@@ -5,6 +5,6 @@ extend type Query {
 input PedidoInput {
     id: ID
     codigo: String
-    cliente: ClienteInput!
+    cliente: ClienteInput
     produtos: [ProdutoInput]
 }
