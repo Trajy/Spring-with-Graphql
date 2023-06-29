@@ -1,16 +1,14 @@
 package br.com.trajy.graphql.controller;
 
-import br.com.trajy.graphql.model.output.Cliente;
+import br.com.trajy.graphql.model.output.ClienteOutput;
 
 public class Generalization {
 
-    public Cliente test() {
-        Cliente cliente = new Cliente();
+    public static String TYPE_NAME;
+
+    public ClienteOutput test() {
+        ClienteOutput cliente = new ClienteOutput();
         cliente.setNome("Olha");
         return cliente;
-    }
-
-    public String documento(Cliente c) {
-        return "Documento Testado";
     }
 }

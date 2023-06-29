@@ -25,7 +25,4 @@ public class ProdutoOutput {
 
     private BigDecimal preco;
 
-    @ManyToMany(mappedBy = "produtos")
-    private List<PedidoOutput> pedidos;
-
 }

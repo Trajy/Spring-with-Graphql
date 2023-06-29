@@ -9,6 +9,7 @@ import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import java.util.List;
 
@@ -25,7 +26,8 @@ public class ClienteOutput {
 
     private String documento;
 
-    @OneToMany(mappedBy = "cliente", cascade = ALL)
+    @OneToMany(cascade = ALL)
+    @JoinColumn(name = "cliente_id")
     private List<PedidoOutput> pedidos;
 
 }

@@ -26,10 +26,6 @@ public class PedidoOutput {
 
     private String codigo;
 
-    @ManyToOne
-    @JoinColumn(name = "cliente_id")
-    private ClienteOutput cliente;
-
     @ManyToMany(cascade = ALL)
     @JoinTable(
             name = "pedidos_produtos",
