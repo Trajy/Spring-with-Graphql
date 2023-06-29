@@ -118,6 +118,10 @@
 					</schemaPaths>
 					<packageName>${project.groupId}.graphql</packageName>
 					<snakeCaseConstantNames>true</snakeCaseConstantNames>
+					<typeMapping>
+						<Date>java.time.LocalDate</Date>
+						<DateTime>java.time.LocalDateTime</DateTime>
+					</typeMapping>
 				</configuration>
 			</plugin>
 			<plugin>
