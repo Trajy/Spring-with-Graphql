@@ -34,7 +34,7 @@ public class ClienteController {
     @DgsData(parentType = "ClienteController")
     @Transactional
     public Long save(@InputArgument Cliente cliente) {
-        return this.repository.save(modelMapper.map(cliente, ClienteInput.class)).getId();
+        return this.repository.save(this.modelMapper.map(cliente, ClienteInput.class)).getId();
     }
 
     @DgsData(parentType = "ClienteController")
@@ -46,7 +46,7 @@ public class ClienteController {
     public Boolean delete(@InputArgument String id) {
         Cliente cliente = this.findById(id);
         if(nonNull(cliente)) {
-            this.repository.delete(modelMapper.map(cliente, ClienteInput.class));
+            this.repository.delete(this.modelMapper.map(cliente, ClienteInput.class));
             return TRUE;
         }
         return FALSE;
