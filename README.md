@@ -1,30 +1,5 @@
 <img src="./doc/assets/Spring with Dgs and GraphQL.png" >
 
-<div style="font-size:3em">Spring with Graphql and DGS</div>
-<div>Project created to explore and apply GraphQL and DGS functionalities in Spring Environment
-</div>
+# Spring with Graphql and DGS
+Project created to explore and apply GraphQL and DGS functionalities in Spring Environment
 
-<details style="margin-top: 2em">
-  <summary style="font-size: 2em">Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
