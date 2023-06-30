@@ -3,9 +3,8 @@ package br.com.trajy.graphql;
 import static com.github.javafaker.Faker.instance;
 import static org.springframework.test.util.AssertionErrors.assertEquals;
 
-import br.com.trajy.graphql.types.Cliente;
+import br.com.trajy.graphql.model.Cliente;
 import com.netflix.graphql.dgs.DgsQueryExecutor;
-import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

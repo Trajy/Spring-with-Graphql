@@ -1,9 +1,3 @@
 extend type Query {
     produto(id: ID): Produto
 }
-
-input ProdutoInput {
-    id: ID
-    nome: String
-    preco: Float
-}

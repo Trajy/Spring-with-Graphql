@@ -1,8 +1,8 @@
 package br.com.trajy.graphql.controller;
 
 
-import br.com.trajy.graphql.model.output.ProdutoOutput;
 import br.com.trajy.graphql.repository.ProdutoRepository;
+import br.com.trajy.graphql.model.Produto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 
@@ -12,7 +12,7 @@ public class ProdutoController {
 
     private final ProdutoRepository repository;
 
-    public ProdutoOutput getProduto(Long id) {
+    public Produto getProduto(Long id) {
         return repository.findById(id).orElse(null);
     }
 

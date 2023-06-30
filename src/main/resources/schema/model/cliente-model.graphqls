@@ -1,5 +1,5 @@
-type Cliente {
-    id: ID
+type Cliente @annotate(name: "Entity", type: "persistence") {
+    id: ID @annotate(name: "Id", type: "persistence") @annotate(name: "GeneratedValue", type: "persistence")
     nome: String
     documento: String
     pedidos: [Pedido]

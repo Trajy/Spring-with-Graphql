@@ -9,14 +9,7 @@ extend type Mutation {
 type ClienteController {
     cliente: Cliente
     findById(id: ID!): Cliente
-    save(cliente: ClienteInput!): ID!
-    update(cliente: ClienteInput!): Cliente
+    save(cliente: Cliente!): ID!
+    update(cliente: Cliente!): Cliente
     delete(id: ID!): Boolean
-}
-
-input ClienteInput {
-    id: ID
-    nome: String
-    documento: String
-    pedidos: [PedidoInput]
 }

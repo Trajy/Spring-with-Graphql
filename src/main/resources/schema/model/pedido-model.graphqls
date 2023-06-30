@@ -1,5 +1,6 @@
 type Pedido {
     id: ID
     codigo: String
+    data: Date
     produtos: [Produto]
 }
