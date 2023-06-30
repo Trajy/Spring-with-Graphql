@@ -117,11 +117,23 @@
 						<param>src/main/resources/schema/model/</param>
 					</schemaPaths>
 					<packageName>${project.groupId}.graphql</packageName>
+					<subPackageNameTypes>model</subPackageNameTypes>
 					<snakeCaseConstantNames>true</snakeCaseConstantNames>
 					<typeMapping>
 						<Date>java.time.LocalDate</Date>
 						<DateTime>java.time.LocalDateTime</DateTime>
 					</typeMapping>
+					<generateCustomAnnotations>true</generateCustomAnnotations>
+					<includeImports>
+						<persistence>javax.persistence</persistence>
+					</includeImports>
+					<includeClassImports>
+						<GeneratedValuec>
+							<properties>
+								<GenerationType>javax.persistence</GenerationType>
+							</properties>
+						</GeneratedValuec>
+					</includeClassImports>
 				</configuration>
 			</plugin>
 			<plugin>
