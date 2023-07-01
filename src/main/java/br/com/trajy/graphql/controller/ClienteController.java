@@ -13,11 +13,9 @@ import com.netflix.graphql.dgs.DgsData;
 import com.netflix.graphql.dgs.InputArgument;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
 @DgsComponent
-@Controller
 @RequiredArgsConstructor
 public class ClienteController {
 
