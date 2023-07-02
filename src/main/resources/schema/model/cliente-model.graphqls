@@ -4,3 +4,8 @@ type Cliente {
     documento: String
     pedidos: [Pedido]
 }
+
+input ClienteFilter {
+    nome: String
+    documento: String
+}
