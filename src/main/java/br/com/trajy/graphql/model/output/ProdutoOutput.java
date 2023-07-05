@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import java.math.BigDecimal;
+import java.net.URL;
 import java.util.List;
 
 @Data
@@ -24,5 +25,9 @@ public class ProdutoOutput {
     private String nome;
 
     private BigDecimal preco;
+
+    private Integer quantidade;
+
+    private URL imageUrl;
 
 }

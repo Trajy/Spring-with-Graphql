@@ -5,3 +5,8 @@ type Query {
 type Mutation {
     helloWorld: ID
 }
+
+scalar Date
+scalar DateTime
+scalar Url
+scalar NonNegativeInt

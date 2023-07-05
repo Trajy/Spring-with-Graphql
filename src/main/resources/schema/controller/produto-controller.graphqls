@@ -6,4 +6,6 @@ input ProdutoInput {
     id: ID
     nome: String
     preco: Float
+    quantidade: NonNegativeInt
+    imageUrl: Url
 }

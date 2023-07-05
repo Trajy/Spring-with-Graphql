@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -25,6 +26,8 @@ public class ClienteOutput {
     private String nome;
 
     private String documento;
+
+    private LocalDate nascimento;
 
     @OneToMany(cascade = ALL)
     @JoinColumn(name = "cliente_id")

@@ -121,6 +121,8 @@
 					<typeMapping>
 						<Date>java.time.LocalDate</Date>
 						<DateTime>java.time.LocalDateTime</DateTime>
+						<Url>java.net.URL</Url>
+						<NonNegativeInt>java.lang.Integer</NonNegativeInt>
 					</typeMapping>
 				</configuration>
 			</plugin>

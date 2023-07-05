@@ -19,5 +19,6 @@ input ClienteInput {
     id: ID
     nome: String
     documento: String
+    nascimento: Date
     pedidos: [PedidoInput]
 }
