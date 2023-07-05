@@ -8,4 +8,5 @@ input ProdutoInput {
     preco: Float
     quantidade: NonNegativeInt
     imageUrl: Url
+    categoria: CategoriaProduto
 }

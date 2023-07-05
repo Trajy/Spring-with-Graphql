@@ -4,4 +4,9 @@ type Produto {
     preco: Float
     imageUrl: Url
     quantidade: NonNegativeInt
+    categoria: CategoriaProduto
+}
+
+enum CategoriaProduto {
+    ELETRODOMESTICO, ELETROELETRONICO
 }
