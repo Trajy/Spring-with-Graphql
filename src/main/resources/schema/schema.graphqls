@@ -1,5 +1,6 @@
 type Query {
     helloWorld: String
+    headersTest: String
 }
 
 type Mutation {
