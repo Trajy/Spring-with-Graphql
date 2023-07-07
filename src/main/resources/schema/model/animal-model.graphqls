@@ -2,18 +2,21 @@ extend type Query {
     animalController: AnimalController!
 }
 
+"""Tipo de alimento que o animal consome"""
 enum TipoAlimentoAnimal {
     HERBIVORO,
     CARNIVORO,
     ONIVORO
 }
 
+"""Interface animal"""
 interface Animal {
     nome: String
     tipoComida: TipoAlimentoAnimal
     raca: String
 }
 
+"""Cachorro que implementa a interface Animal"""
 type Cachorro implements Animal {
     nome: String
     tipoComida: TipoAlimentoAnimal
@@ -22,6 +25,8 @@ type Cachorro implements Animal {
     comprimentoPelo: String
 }
 
+
+"""Gato que implementa a Interface animal"""
 type Gato implements Animal {
     nome: String
     tipoComida: TipoAlimentoAnimal
