@@ -1,0 +1,34 @@
+extend type Query {
+    animalController: AnimalController!
+}
+
+enum TipoAlimentoAnimal {
+    HERBIVORO,
+    CARNIVORO,
+    ONIVORO
+}
+
+interface Animal {
+    nome: String
+    tipoComida: TipoAlimentoAnimal
+    raca: String
+}
+
+type Cachorro implements Animal {
+    nome: String
+    tipoComida: TipoAlimentoAnimal
+    raca: String
+    tamanho: String
+    comprimentoPelo: String
+}
+
+type Gato implements Animal {
+    nome: String
+    tipoComida: TipoAlimentoAnimal
+    raca: String
+    registro: String
+}
+
+input AnimalFilter {
+    tipoAnimal: String
+}
