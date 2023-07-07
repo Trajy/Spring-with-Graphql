@@ -1,12 +1,13 @@
 package br.com.trajy.graphql.controller;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestController;
+import com.netflix.graphql.dgs.DgsComponent;
+import com.netflix.graphql.dgs.DgsQuery;
 
-@RestController
+@DgsComponent
 public class HelloWorldController {
 
+    @DgsQuery
     public String helloWorld() {
-        return ResponseEntity.ok("hello GraphQl").getBody();
+        return "hello GraphQl";
     }
 }
