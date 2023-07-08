@@ -7,6 +7,10 @@ type Mutation {
     helloWorld: ID
 }
 
+type Subscription {
+    time: String
+}
+
 scalar Date
 scalar DateTime
 scalar Url
