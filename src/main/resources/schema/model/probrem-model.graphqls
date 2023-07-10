@@ -1,0 +1,21 @@
+type Problem implements Searchable {
+    id: ID!
+    createdAt: DateTime!
+    prettyCreatedAt: String
+    title: String!
+    content: String!
+    tags: [String!]!
+    solutionCount: NonNegativeInt
+    author: User!
+    solutionz: [Solution!]
+}
+
+type ProblemResponse {
+    problem: Problem
+}
+
+input ProblemInput {
+    title: String!
+    content: String!
+    tags: [String!]!
+}

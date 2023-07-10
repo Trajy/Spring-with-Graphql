@@ -1,0 +1,41 @@
+type User {
+    id: ID!
+    username: String!
+    email: String!
+    avatar: URL
+    createdAt: DateTime!
+    displayName: String
+    problemz: [Problem!]
+}
+
+type UserAuthToken {
+    token: String
+    expiryTime: DateTime
+}
+
+type UserResponse {
+    user: User
+    authToken: UserAuthToken
+}
+
+type UserActivationResponse {
+    isActive: Boolean!
+}
+
+input UserCreateInput {
+    username: String!
+    email: String!
+    password: String!
+    displayName: String
+    avatar: URL
+}
+
+input UserLoginInput {
+    username: String!
+    password: String!
+}
+
+input UserActivationInput {
+    userId: ID!
+    active: Boolean
+}

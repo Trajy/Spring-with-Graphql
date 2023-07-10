@@ -1,0 +1,29 @@
+type Solution implements Searchable {
+    id: ID!
+    createdAt: DateTime!
+    prettyCreatedAt: String
+    content: String!
+    category: SolutionCategoty!
+    voteAsGood: NonNegativeInt
+    voteAsBad: NonNegativeInt
+    author: User!
+}
+
+type SolutionResponse {
+    solution: Solution
+}
+
+input SolutionInput {
+    content: String!
+    category: SolutionCategoty!
+    problemId: ID!
+}
+
+input SolutionVoteInput {
+    solutionId: ID!
+    voteAsGood: Boolean!
+}
+
+enum SolutionCategoty {
+    EXPLANATION, REFERENCE
+}

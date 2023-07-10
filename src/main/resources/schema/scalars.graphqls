@@ -1,0 +1,3 @@
+scalar NonNegativeInt
+scalar URL
+scalar DateTime

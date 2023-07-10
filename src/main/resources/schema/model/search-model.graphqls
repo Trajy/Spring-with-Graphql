@@ -1,0 +1,11 @@
+interface Searchable {
+    id: ID!
+    createdAt: DateTime!
+    prettyCreatedAt: String
+    content: String!
+    author: User!
+}
+
+input SearchInput {
+    keyword: String!
+}
