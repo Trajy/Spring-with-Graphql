@@ -1,5 +1,0 @@
-type Pedido {
-    id: ID
-    codigo: String
-    produtos: [Produto]
-}

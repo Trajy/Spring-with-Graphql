@@ -1,9 +1,0 @@
-extend type Query {
-    pedido(id: ID): Pedido
-}
-
-input PedidoInput {
-    id: ID
-    codigo: String
-    produtos: [ProdutoInput]
-}

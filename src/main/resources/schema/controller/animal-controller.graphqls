@@ -1,4 +1,0 @@
-type AnimalController {
-    find(filter: AnimalFilter): [Animal]
-    findUnion(filter: AnimalFilter): [ChachorroAndGato]
-}
