@@ -78,7 +78,6 @@
 		<dependency>
 			<groupId>com.netflix.graphql.dgs</groupId>
 			<artifactId>graphql-dgs-subscriptions-websockets-autoconfigure</artifactId>
-			<version>3.1.0</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -120,28 +119,36 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-				<groupId>io.github.deweyjose</groupId>
-				<artifactId>graphqlcodegen-maven-plugin</artifactId>
+				<groupId>io.github.kobylynskyi</groupId>
+				<artifactId>graphql-codegen-maven-plugin</artifactId>
+				<version>5.9.0</version>
 				<executions>
 					<execution>
 						<goals>
 							<goal>generate</goal>
 						</goals>
+						<configuration>
+							<!-- all config options:
+                            https://github.com/kobylynskyi/graphql-java-codegen/blob/main/docs/codegen-options.md
+                            -->
+							<graphqlSchemas>
+								<includePattern>schema\.graphqls</includePattern>
+							</graphqlSchemas>
+							<outputDir>${project.build.directory}/generated-sources/graphql</outputDir>
+							<packageName>io.github.kobylynskyi.bikeshop.graphql.model</packageName>
+							<customTypesMapping>
+								<DateTime>java.util.Date</DateTime>
+								<Price.amount>java.math.BigDecimal</Price.amount>
+							</customTypesMapping>
+							<customAnnotationsMapping>
+								<EpochMillis>
+									<annotation>com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = com.example.json.EpochMillisScalarDeserializer.class)</annotation>
+								</EpochMillis>
+							</customAnnotationsMapping>
+							<modelNameSuffix>TO</modelNameSuffix>
+						</configuration>
 					</execution>
 				</executions>
-				<configuration>
-					<schemaPaths>
-						<param>src/main/resources/schema/model/</param>
-					</schemaPaths>
-					<packageName>${project.groupId}.graphql</packageName>
-					<snakeCaseConstantNames>true</snakeCaseConstantNames>
-					<typeMapping>
-						<Date>java.time.LocalDate</Date>
-						<DateTime>java.time.LocalDateTime</DateTime>
-						<URL>java.net.URL</URL>
-						<NonNegativeInt>java.lang.Integer</NonNegativeInt>
-					</typeMapping>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
