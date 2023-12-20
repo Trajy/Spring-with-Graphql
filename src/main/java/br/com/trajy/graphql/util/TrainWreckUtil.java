@@ -1,16 +1,17 @@
 package br.com.trajy.graphql.util;
 
+import lombok.experimental.UtilityClass;
 import java.util.function.Supplier;
 
-public final class TrainWreckUtil {
+@UtilityClass
+public class TrainWreckUtil {
 
-    private TrainWreckUtil() { }
-
-    public static <T> T nullIfWreck(Supplier<T> in) {
+    public <T> T nullIfWreck(Supplier<T> in) {
         try {
             return in.get();
         } catch (NullPointerException e) {
             return null;
         }
     }
+
 }
