@@ -2,7 +2,7 @@ type User {
     id: ID!
     username: String!
     email: String!
-    avatar: URL
+    avatar: Url
     createdAt: DateTime!
     displayName: String
     problemz: [Problem!]
@@ -27,7 +27,7 @@ input UserCreateInput {
     email: String!
     password: String!
     displayName: String
-    avatar: URL
+    avatar: Url
 }
 
 input UserLoginInput {
