@@ -37,7 +37,7 @@ public class ProblemEntity {
     @Column(name = "tags")
     private String tags;
 
-    @OneToMany(mappedBy = "problemz")
+    @OneToMany(mappedBy = "problem")
     private List<SolutionEntity> solutionz;
 
     @ManyToOne

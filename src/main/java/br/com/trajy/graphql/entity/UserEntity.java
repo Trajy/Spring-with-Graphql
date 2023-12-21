@@ -7,9 +7,11 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.net.URL;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -44,5 +46,11 @@ public class UserEntity {
 
     @Column(name = "active")
     private Boolean active;
+
+    @OneToMany(mappedBy = "author")
+    private List<ProblemEntity> problemz;
+
+    @OneToMany(mappedBy = "author")
+    private List<SolutionEntity> solutionz;
 
 }
