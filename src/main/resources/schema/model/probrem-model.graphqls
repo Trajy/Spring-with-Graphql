@@ -4,7 +4,7 @@ type Problem implements Searchable {
     prettyCreatedAt: String
     title: String!
     content: String!
-    tags: [String!]!
+    tags: String!
     solutionCount: NonNegativeInt
     author: User!
     solutionz: [Solution!]
