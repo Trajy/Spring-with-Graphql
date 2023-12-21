@@ -6,6 +6,7 @@ type User {
     createdAt: DateTime!
     displayName: String
     problemz: [Problem!]
+    solutionz: [Solution!]
 }
 
 type UserAuthToken {
