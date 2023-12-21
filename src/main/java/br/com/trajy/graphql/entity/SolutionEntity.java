@@ -1,11 +1,15 @@
 package br.com.trajy.graphql.entity;
 
+import static javax.persistence.EnumType.STRING;
+
+import br.com.trajy.graphql.codegen.tad.SolutionCategoty;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -31,8 +35,9 @@ public class SolutionEntity {
     @Column(name = "content", nullable = false)
     private String content;
 
+    @Enumerated(STRING)
     @Column(name = "cotegory")
-    private String category;
+    private SolutionCategoty category;
 
     @Column(name = "vote_as_good")
     private Integer voteAsGood;
