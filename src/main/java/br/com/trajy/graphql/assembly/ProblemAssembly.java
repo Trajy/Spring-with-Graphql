@@ -26,7 +26,7 @@ public class ProblemAssembly {
                 .setAuthor(entity.getAuthor().userToGraphQlModel())
                 .setSolutionCount(entity.getSolutionz().size())
                 .setSolutionz(entity.getSolutionz().solutionzToGraphQlModel())
-                .setCreatedAt(entity.getCreationTimestamp().toStringNullSafe())
+                .setCreatedAt(entity.getCreationTimestamp())
                 .build();
     }
 

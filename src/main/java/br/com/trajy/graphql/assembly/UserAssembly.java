@@ -20,10 +20,10 @@ public class UserAssembly {
                 .setUsername(entity.getUsername())
                 .setDisplayName(entity.getDisplayName())
                 .setEmail(entity.getEmail())
-                .setAvatar(entity.getAvatarUrl().toStringNullSafe())
+                .setAvatar(entity.getAvatarUrl())
                 .setProblemz(entity.getProblemz().problemzToGraphQlModel())
                 .setSolutionz(entity.getSolutionz().solutionzToGraphQlModel())
-                .setCreatedAt(entity.getCreationTimestamp().toStringNullSafe())
+                .setCreatedAt(entity.getCreationTimestamp())
                 .build();
     }
 

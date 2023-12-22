@@ -7,6 +7,8 @@ import br.com.trajy.graphql.entity.SolutionEntity;
 import br.com.trajy.graphql.util.CommonUtil;
 import lombok.experimental.ExtensionMethod;
 import lombok.experimental.UtilityClass;
+import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @ExtensionMethod({
@@ -27,7 +29,7 @@ public class SolutionAssembly {
                 .setVoteAsBad(entity.getVoteAsBad())
                 .setAuthor(entity.getAuthor().userToGraphQlModel())
                 .setProblem(entity.getProblem().problemToGraphQlModel())
-                .setCreatedAt(entity.getCreationTimestamp().toStringNullSafe())
+                .setCreatedAt(entity.getCreationTimestamp())
                 .build();
     }
 
