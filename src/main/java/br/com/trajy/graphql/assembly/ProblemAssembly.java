@@ -1,6 +1,7 @@
 package br.com.trajy.graphql.assembly;
 
 import static java.util.stream.Collectors.toList;
+import static org.springframework.beans.factory.support.ManagedList.of;
 
 import br.com.trajy.graphql.codegen.tad.Problem;
 import br.com.trajy.graphql.entity.ProblemEntity;
@@ -22,7 +23,7 @@ public class ProblemAssembly {
                 .setId(entity.getId().toString())
                 .setTitle(entity.getTitle())
                 .setContent(entity.getContent())
-                .setTags(entity.getTags())
+                .setTags(of(entity.getTags().split(", ")))
                 .setAuthor(entity.getAuthor().userToGraphQlModel())
                 .setSolutionCount(entity.getSolutionz().size())
                 .setSolutionz(entity.getSolutionz().solutionzToGraphQlModel())
