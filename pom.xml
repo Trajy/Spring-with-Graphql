@@ -142,6 +142,7 @@
 							<apiPackageName>br.com.trajy.graphql.codegen.resolver</apiPackageName>
 							<modelPackageName>br.com.trajy.graphql.codegen.tad</modelPackageName>
 							<apiInterfaceStrategy>DO_NOT_GENERATE</apiInterfaceStrategy>
+							<generateApisWithThrowsException>false</generateApisWithThrowsException>
 							<customTypesMapping>
 								<NonNegativeInt>java.lang.Integer</NonNegativeInt>
 								<Url>java.net.URL</Url>
