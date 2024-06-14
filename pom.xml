@@ -138,7 +138,7 @@
 							<!-- all config options:
                             https://github.com/kobylynskyi/graphql-java-codegen/blob/main/docs/codegen-options.md
                             -->
-							<outputDir>${project.build.directory}/generated-sources/graphql</outputDir>
+							<outputDir>${project.build.directory}/generated-sources</outputDir>
 							<apiPackageName>br.com.trajy.graphql.codegen.resolver</apiPackageName>
 							<modelPackageName>br.com.trajy.graphql.codegen.tad</modelPackageName>
 							<apiInterfaceStrategy>DO_NOT_GENERATE</apiInterfaceStrategy>
