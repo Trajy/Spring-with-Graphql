@@ -19,16 +19,18 @@ import java.util.List;
 public class ProblemAssembly {
 
     public Problem problemToGraphQlModel(ProblemEntity entity) {
-        return Problem.builder()
+        Problem problem = Problem.builder()
                 .setId(entity.getId().toString())
                 .setTitle(entity.getTitle())
                 .setContent(entity.getContent())
                 .setTags(of(entity.getTags().split(", ")))
-                .setAuthor(entity.getAuthor().userToGraphQlModel())
                 .setSolutionCount(entity.getSolutionz().size())
                 .setSolutionz(entity.getSolutionz().solutionzToGraphQlModel())
                 .setCreatedAt(entity.getCreationTimestamp())
                 .build();
+                entity.getAuthor().setProblemz(null);
+                problem.setAuthor(entity.getAuthor().userToGraphQlModel());
+        return problem;
     }
 
     public List<Problem> problemzToGraphQlModel(List<ProblemEntity> entities) {

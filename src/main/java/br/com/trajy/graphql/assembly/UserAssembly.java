@@ -17,16 +17,24 @@ import lombok.experimental.UtilityClass;
 public class UserAssembly {
 
     public User userToGraphQlModel(UserEntity entity) {
-        return User.builder()
+        User user = User.builder()
                 .setId(entity.getId().toString())
                 .setUsername(entity.getUsername())
                 .setDisplayName(entity.getDisplayName())
                 .setEmail(entity.getEmail())
                 .setAvatar(entity.getAvatarUrl())
-                .setProblemz(entity.getProblemz().problemzToGraphQlModel())
                 .setSolutionz(entity.getSolutionz().solutionzToGraphQlModel())
                 .setCreatedAt(entity.getCreationTimestamp())
                 .build();
+                if(entity.getProblemz() != null) {
+                    entity.getProblemz().forEach(problemEntity -> {
+                        if (problemEntity.getAuthor() != null) {
+                            problemEntity.setAuthor(null);
+                        }
+                    });
+                    user.setProblemz(entity.getProblemz().problemzToGraphQlModel());
+                }
+        return user;
     }
 
     public UserAuthToken userTokenToGraphQlModel(UserTokenEntity entity) {
