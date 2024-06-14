@@ -23,7 +23,7 @@ public class ProblemEntity {
 
     @Id
     @Column(name = "id", nullable = false)
-    private UUID id;
+    private Long id;
 
     @CreationTimestamp
     @Column(name = "creation_timestamp")

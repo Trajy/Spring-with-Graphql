@@ -19,7 +19,7 @@ public class UserTokenEntity {
 
     @Id
     @Column(name = "id", nullable = false)
-    private UUID id;
+    private Long id;
 
     @Column(name = "auth_token", nullable = false)
     private String authToken;

@@ -1,5 +1,7 @@
 package br.com.trajy.graphql.resolver;
 
+import static java.lang.Long.valueOf;
+
 import br.com.trajy.graphql.assembly.ProblemAssembly;
 import br.com.trajy.graphql.codegen.resolver.QueryResolver;
 import br.com.trajy.graphql.codegen.tad.Problem;
@@ -40,7 +42,8 @@ public class QueryResolverImpl implements QueryResolver {
     }
 
     @Override
+    @DgsQuery
     public Problem problemDetail(String id) {
-        return null;
+        return problemService.findById(valueOf(id)).problemToGraphQlModel();
     }
 }

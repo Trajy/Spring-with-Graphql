@@ -26,7 +26,7 @@ public class SolutionEntity {
 
     @Id
     @Column(name = "id", nullable = false)
-    private UUID id;
+    private Long id;
 
     @CreationTimestamp
     @Column(name = "creation_timestamp")

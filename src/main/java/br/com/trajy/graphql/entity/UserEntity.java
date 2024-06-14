@@ -23,7 +23,7 @@ public class UserEntity {
 
     @Id
     @Column(name = "id", nullable = false, updatable = false)
-    private UUID id;
+    private Long id;
 
     @Column(name = "username", nullable = false, unique = true)
     private String username;

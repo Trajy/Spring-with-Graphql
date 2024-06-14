@@ -17,7 +17,7 @@ public class ProblemService {
         return repository.findAllByOrderByCreationTimestampDesc();
     }
 
-    public ProblemEntity findById(UUID id) {
+    public ProblemEntity findById(Long id) {
         return repository.findById(id).orElse(null);
     }
 
