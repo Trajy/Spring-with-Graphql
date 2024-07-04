@@ -138,16 +138,10 @@
 							<!-- all config options:
                             https://github.com/kobylynskyi/graphql-java-codegen/blob/main/docs/codegen-options.md
                             -->
+							<configurationFiles>
+								<configurationFile>src/main/resources/graphql-config.json</configurationFile>
+							</configurationFiles>
 							<outputDir>${project.build.directory}/generated-sources</outputDir>
-							<apiPackageName>br.com.trajy.graphql.codegen.resolver</apiPackageName>
-							<modelPackageName>br.com.trajy.graphql.codegen.tad</modelPackageName>
-							<apiInterfaceStrategy>DO_NOT_GENERATE</apiInterfaceStrategy>
-							<generateApisWithThrowsException>false</generateApisWithThrowsException>
-							<customTypesMapping>
-								<NonNegativeInt>java.lang.Integer</NonNegativeInt>
-								<Url>java.net.URL</Url>
-								<DateTime>java.time.LocalDateTime</DateTime>
-							</customTypesMapping>
 						</configuration>
 					</execution>
 				</executions>

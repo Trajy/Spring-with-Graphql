@@ -1,0 +1,11 @@
+{
+  "apiPackageName": "br.com.trajy.graphql.codegen.resolver",
+  "modelPackageName": "br.com.trajy.graphql.codegen.tad",
+  "apiInterfaceStrategy": "DO_NOT_GENERATE",
+  "generateApisWithThrowsException": false,
+  "customTypesMapping": {
+    "NonNegativeInt": "java.lang.Integer",
+    "Url": "java.net.URL",
+    "DateTime": "java.time.LocalDateTime"
+  }
+}
