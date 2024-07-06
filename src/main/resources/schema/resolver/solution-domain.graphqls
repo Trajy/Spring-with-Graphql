@@ -1,0 +1,9 @@
+type SolutionDomainQuery {
+    provisory: Int
+}
+
+type SolutionDomainMutation {
+    createSolution(solution: SolutionInput): SolutionResponse!
+    voteSolution(vote: SolutionVoteInput): SolutionResponse!
+}
+

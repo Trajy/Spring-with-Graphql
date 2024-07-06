@@ -1,16 +1,12 @@
-package br.com.trajy.graphql.resolver;
+package br.com.trajy.graphql.resolver.domain;
 
 import static java.lang.Long.valueOf;
 
 import br.com.trajy.graphql.assembly.ProblemAssembly;
-import br.com.trajy.graphql.codegen.resolver.QueryResolver;
 import br.com.trajy.graphql.codegen.tad.Problem;
-import br.com.trajy.graphql.codegen.tad.SearchInput;
-import br.com.trajy.graphql.codegen.tad.Searchable;
-import br.com.trajy.graphql.codegen.tad.User;
 import br.com.trajy.graphql.service.ProblemService;
 import com.netflix.graphql.dgs.DgsComponent;
-import com.netflix.graphql.dgs.DgsQuery;
+import com.netflix.graphql.dgs.DgsData;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.ExtensionMethod;
 import java.util.List;
@@ -20,30 +16,18 @@ import java.util.List;
 })
 @DgsComponent
 @RequiredArgsConstructor
-public class QueryResolverImpl implements QueryResolver {
-
+public class ProblemDomainResolver {
 
     private final ProblemService problemService;
 
-    @Override
-    public User me() {
-        return null;
-    }
-
-    @Override
-    @DgsQuery
+    @DgsData(parentType = "ProblemDomainQuery")
     public List<Problem> problemzLatest() {
         return problemService.findLatest().problemzToGraphQlModel();
     }
 
-    @Override
-    public List<Searchable> search(SearchInput filter) {
-        return null;
-    }
-
-    @Override
-    @DgsQuery
+    @DgsData(parentType = "ProblemDomainQuery")
     public Problem problemDetail(String id) {
         return problemService.findById(valueOf(id)).problemToGraphQlModel();
     }
+
 }

@@ -1,0 +1,8 @@
+type ProblemDomainQuery {
+    problemzLatest: [Problem!]
+    problemDetail(id: ID!): Problem!
+}
+
+type ProblemDomainMutation {
+    createProblem(problem: ProblemInput): ProblemResponse!
+}

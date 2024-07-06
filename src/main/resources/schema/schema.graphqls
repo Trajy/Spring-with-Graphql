@@ -1,17 +1,14 @@
 type Query {
-    me: User!
-    problemzLatest: [Problem!]
     search(filter: SearchInput): [Searchable]
-    problemDetail(id: ID!): Problem!
+    userDomain: UserDomainQuery!
+    problemDomain: ProblemDomainQuery!
+    solutionDomain: SolutionDomainQuery!
 }
 
 type Mutation {
-    createUser(user: UserCreateInput): UserResponse!
-    userLogin(user: UserLoginInput): UserResponse!
-    userActivation(userActivation: UserActivationInput): UserActivationResponse!
-    createProblem(problem: ProblemInput): ProblemResponse!
-    createSolution(solution: SolutionInput): SolutionResponse!
-    voteSolution(vote: SolutionVoteInput): SolutionResponse!
+    userDomain: UserDomainMutation!
+    problemDomain: ProblemDomainMutation!
+    solutionDomain: SolutionDomainMutation!
 }
 
 type Subscription {

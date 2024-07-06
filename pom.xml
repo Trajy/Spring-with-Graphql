@@ -138,6 +138,9 @@
 							<!-- all config options:
                             https://github.com/kobylynskyi/graphql-java-codegen/blob/main/docs/codegen-options.md
                             -->
+							<graphqlSchemas>
+								<rootDir>src/main/resources/schema/model/</rootDir>
+							</graphqlSchemas>
 							<configurationFiles>
 								<configurationFile>src/main/resources/graphql-config.json</configurationFile>
 							</configurationFiles>

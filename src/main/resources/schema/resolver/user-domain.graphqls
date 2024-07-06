@@ -1,0 +1,9 @@
+type UserDomainQuery {
+    me: User!
+}
+
+type UserDomainMutation {
+    createUser(user: UserCreateInput): UserResponse!
+    userLogin(user: UserLoginInput): UserResponse!
+    userActivation(userActivation: UserActivationInput): UserActivationResponse!
+}
