@@ -1,5 +1,5 @@
 type SolutionDomainQuery {
-    provisory: Int
+    solutionDetail(id: ID!): Solution
 }
 
 type SolutionDomainMutation {
