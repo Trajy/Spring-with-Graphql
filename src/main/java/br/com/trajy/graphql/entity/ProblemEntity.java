@@ -38,7 +38,7 @@ public class ProblemEntity {
     @Column(name = "tags")
     private String tags;
 
-    @OrderBy("creationTimestamp")
+    @OrderBy("creationTimestamp desc")
     @OneToMany(mappedBy = "problem")
     private List<SolutionEntity> solutionz;
 
