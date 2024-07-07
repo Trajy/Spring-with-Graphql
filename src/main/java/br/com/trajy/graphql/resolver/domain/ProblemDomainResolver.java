@@ -20,22 +20,26 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProblemDomainResolver {
 
-    private final ProblemService problemService;
+    private final ProblemService service;
 
     @DgsData(parentType = "ProblemDomainQuery")
     public List<Problem> problemzLatest() {
-        return problemService.findLatest().problemzToGraphQlModel();
+        return service.findLatest().problemzToGraphQlModel();
     }
 
     @DgsData(parentType = "ProblemDomainQuery")
     public Problem problemDetail(String id) {
-        return problemService.findById(valueOf(id)).problemToGraphQlModel();
+        return service.findById(valueOf(id)).problemToGraphQlModel();
     }
 
     @DgsData(parentType = "ProblemDomainMutation")
     public ProblemResponse createProblem(ProblemInput input) {
         //TODO - to implement
         return ProblemResponse.builder().build();
+    }
+
+    public List<Problem> findByKeyword(String keyword) {
+        return service.findByKeyword(keyword).problemzToGraphQlModel();
     }
 
 }

@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Getter
@@ -25,9 +26,9 @@ public class UserTokenEntity {
     private String authToken;
 
     @Column(name = "creation_timestamp")
-    private LocalDateTime creationTimestamp;
+    private OffsetDateTime creationTimestamp;
 
     @Column(name = "expiry_timestamp")
-    private LocalDateTime expiryTimestamp;
+    private OffsetDateTime expiryTimestamp;
 
 }

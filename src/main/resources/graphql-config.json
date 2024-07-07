@@ -6,6 +6,6 @@
   "customTypesMapping": {
     "NonNegativeInt": "java.lang.Integer",
     "Url": "java.net.URL",
-    "DateTime": "java.time.LocalDateTime"
+    "DateTime": "java.time.OffsetDateTime"
   }
 }

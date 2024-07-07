@@ -21,4 +21,8 @@ public class ProblemService {
         return repository.findById(id).orElse(null);
     }
 
+    public List<ProblemEntity> findByKeyword(String keyword) {
+        return repository.findByKeyword("%".concat(keyword).concat("%"));
+    }
+
 }

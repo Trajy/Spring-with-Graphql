@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,7 +28,7 @@ public class ProblemEntity {
 
     @CreationTimestamp
     @Column(name = "creation_timestamp")
-    private LocalDateTime creationTimestamp;
+    private OffsetDateTime creationTimestamp;
 
     @Column(name = "title", nullable = false)
     private String title;
