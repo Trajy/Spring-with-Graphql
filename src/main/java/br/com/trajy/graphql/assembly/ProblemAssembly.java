@@ -19,22 +19,26 @@ import java.util.List;
 public class ProblemAssembly {
 
     public Problem problemToGraphQlModel(ProblemEntity entity) {
-        Problem problem = Problem.builder()
+        preventCiclicReference(entity);
+        return Problem.builder()
                 .setId(entity.getId().toString())
                 .setTitle(entity.getTitle())
+                .setAuthor(entity.getAuthor().userToGraphQlModel())
                 .setContent(entity.getContent())
                 .setTags(of(entity.getTags().split(", ")))
                 .setSolutionCount(entity.getSolutionz().size())
                 .setSolutionz(entity.getSolutionz().solutionzToGraphQlModel())
                 .setCreatedAt(entity.getCreationTimestamp())
                 .build();
-                entity.getAuthor().setProblemz(null);
-                problem.setAuthor(entity.getAuthor().userToGraphQlModel());
-        return problem;
     }
 
     public List<Problem> problemzToGraphQlModel(List<ProblemEntity> entities) {
         return entities.stream().map(ProblemAssembly::problemToGraphQlModel).collect(toList());
+    }
+
+    private void preventCiclicReference(ProblemEntity entity) {
+        entity.getAuthor().setProblemz(null);
+        entity.getSolutionz().forEach(solutionEntity -> solutionEntity.setProblem(null));
     }
 
 }
