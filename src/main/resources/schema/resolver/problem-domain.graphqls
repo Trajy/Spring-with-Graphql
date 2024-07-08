@@ -4,5 +4,5 @@ type ProblemDomainQuery {
 }
 
 type ProblemDomainMutation {
-    createProblem(problem: ProblemInput): ProblemResponse!
+    createProblem(input: ProblemInput): ProblemResponse!
 }

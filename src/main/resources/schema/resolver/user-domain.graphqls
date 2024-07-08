@@ -3,7 +3,7 @@ type UserDomainQuery {
 }
 
 type UserDomainMutation {
-    createUser(user: UserCreateInput): UserResponse!
-    userLogin(user: UserLoginInput): UserResponse!
-    userActivation(userActivation: UserActivationInput): UserActivationResponse!
+    createUser(input: UserCreateInput): UserResponse!
+    userLogin(input: UserLoginInput): UserResponse!
+    userActivation(input: UserActivationInput): UserActivationResponse!
 }
