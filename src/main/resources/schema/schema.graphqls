@@ -1,5 +1,5 @@
 type Query {
-    search(filter: SearchInput): [Searchable]
+    search(input: SearchInput): [Searchable]
     userDomain: UserDomainQuery!
     problemDomain: ProblemDomainQuery!
     solutionDomain: SolutionDomainQuery!
