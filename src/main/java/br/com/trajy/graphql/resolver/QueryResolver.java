@@ -4,6 +4,7 @@ import br.com.trajy.graphql.resolver.domain.ProblemDomainResolver;
 import br.com.trajy.graphql.resolver.domain.SolutionDomainResolver;
 import br.com.trajy.graphql.resolver.domain.UserDomainResolver;
 import com.netflix.graphql.dgs.DgsComponent;
+import com.netflix.graphql.dgs.DgsMutation;
 import com.netflix.graphql.dgs.DgsQuery;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class QueryResolver {
 
-    @Getter(onMethod_ = @DgsQuery(field = "userDomain"))
+    @Getter(onMethod_ = { @DgsQuery(field = "userDomain"), @DgsMutation(field = "userDomain")})
     private final UserDomainResolver userDomainResolver;
 
     @Getter(onMethod_ = @DgsQuery(field = "problemDomain"))
