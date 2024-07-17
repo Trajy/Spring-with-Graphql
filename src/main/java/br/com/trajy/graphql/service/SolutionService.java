@@ -1,6 +1,6 @@
 package br.com.trajy.graphql.service;
 
-import br.com.trajy.graphql.entity.SolutionEntity;
+import br.com.trajy.graphql.model.entity.SolutionEntity;
 import br.com.trajy.graphql.repository.SolutionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

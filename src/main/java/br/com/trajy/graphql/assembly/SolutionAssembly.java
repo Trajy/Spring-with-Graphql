@@ -3,12 +3,10 @@ package br.com.trajy.graphql.assembly;
 import static java.util.stream.Collectors.toList;
 
 import br.com.trajy.graphql.codegen.tad.Solution;
-import br.com.trajy.graphql.entity.SolutionEntity;
+import br.com.trajy.graphql.model.entity.SolutionEntity;
 import br.com.trajy.graphql.util.CommonUtil;
 import lombok.experimental.ExtensionMethod;
 import lombok.experimental.UtilityClass;
-import java.net.URL;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @ExtensionMethod({

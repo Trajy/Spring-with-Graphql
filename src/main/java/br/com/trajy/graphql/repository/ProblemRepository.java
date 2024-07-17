@@ -1,6 +1,6 @@
 package br.com.trajy.graphql.repository;
 
-import br.com.trajy.graphql.entity.ProblemEntity;
+import br.com.trajy.graphql.model.entity.ProblemEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
