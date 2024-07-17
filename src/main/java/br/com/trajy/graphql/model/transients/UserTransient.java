@@ -11,7 +11,7 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @Data
 @SuperBuilder
-public class UserResponseTransient {
+public class UserTransient {
 
     private UserEntity user;
 

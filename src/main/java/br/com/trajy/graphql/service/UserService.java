@@ -5,7 +5,7 @@ import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
 import br.com.trajy.graphql.model.entity.UserEntity;
 import br.com.trajy.graphql.model.entity.UserTokenEntity;
-import br.com.trajy.graphql.model.transients.UserResponseTransient;
+import br.com.trajy.graphql.model.transients.UserTransient;
 import br.com.trajy.graphql.repository.UserRepository;
 import br.com.trajy.graphql.repository.UserTokenRepository;
 import br.com.trajy.graphql.util.HashUtil;
@@ -31,12 +31,12 @@ public class UserService {
     }
 
     @SneakyThrows(value = IllegalAccessException.class)
-    public UserResponseTransient login(String username, String password) {
+    public UserTransient login(String username, String password) {
         Optional<UserEntity> user = repository.findByUsernameIgnoreCase(username);
         if(user.isEmpty() || !password.isBCriptyMatch(user.get().getHashedPassword())) {
             throw new IllegalAccessException("Invalid Credentials");
         }
-        return UserResponseTransient.builder()
+        return UserTransient.builder()
                 .user(user.get())
                 .userToken(refreshToken(user.get().getId()))
                 .build();

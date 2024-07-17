@@ -7,7 +7,7 @@ import br.com.trajy.graphql.codegen.tad.UserAuthToken;
 import br.com.trajy.graphql.codegen.tad.UserResponse;
 import br.com.trajy.graphql.model.entity.UserEntity;
 import br.com.trajy.graphql.model.entity.UserTokenEntity;
-import br.com.trajy.graphql.model.transients.UserResponseTransient;
+import br.com.trajy.graphql.model.transients.UserTransient;
 import br.com.trajy.graphql.util.CommonUtil;
 import lombok.experimental.ExtensionMethod;
 import lombok.experimental.UtilityClass;
@@ -20,7 +20,7 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class UserAssembly {
 
-    public UserResponse userResponseTransientToGraphQlModel(UserResponseTransient transientModel) {
+    public UserResponse userResponseTransientToGraphQlModel(UserTransient transientModel) {
         return UserResponse.builder()
                 .setUser(userToGraphQlModel(transientModel.getUser()))
                 .setAuthToken(userTokenToGraphQlModel(transientModel.getUserToken()))
