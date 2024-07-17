@@ -7,10 +7,8 @@ spring:
     url: /graphql
     graphiql:
       enabled: true
-      path: ${spring.graphql.url}
   playground:
     mapping: /playground
-    endpoint: ${spring.graphql.url}
     settings:
       editor:
         theme: dark
