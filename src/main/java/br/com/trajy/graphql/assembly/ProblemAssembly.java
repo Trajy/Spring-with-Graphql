@@ -2,12 +2,10 @@ package br.com.trajy.graphql.assembly;
 
 import static br.com.trajy.graphql.util.TrainWreckUtil.nullIfWreck;
 import static java.lang.String.join;
-import static java.util.Objects.isNull;
-import static java.util.Objects.nonNull;
+import static java.util.List.of;
 import static java.util.stream.Collectors.toList;
 import static org.apache.commons.collections4.ListUtils.emptyIfNull;
 import static org.apache.commons.lang3.StringUtils.SPACE;
-import static org.springframework.beans.factory.support.ManagedList.of;
 
 import br.com.trajy.graphql.codegen.tad.Problem;
 import br.com.trajy.graphql.codegen.tad.ProblemInput;
