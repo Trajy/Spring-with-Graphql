@@ -12,6 +12,8 @@ public class ProblemService {
 
     private final ProblemRepository repository;
 
+    private final UserService userService;
+
     public List<ProblemEntity> findLatest() {
         return repository.findAllByOrderByCreationTimestampDesc();
     }
@@ -22,6 +24,11 @@ public class ProblemService {
 
     public List<ProblemEntity> findByKeyword(String keyword) {
         return repository.findByKeyword("%".concat(keyword).concat("%"));
+    }
+
+    public ProblemEntity save(ProblemEntity entity, String authToken) {
+        entity.setAuthor(userService.findMeByToken(authToken));
+        return repository.save(entity);
     }
 
 }

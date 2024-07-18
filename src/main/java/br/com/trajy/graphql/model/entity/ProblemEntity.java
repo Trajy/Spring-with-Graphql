@@ -3,7 +3,9 @@ package br.com.trajy.graphql.model.entity;
 import static javax.persistence.GenerationType.IDENTITY;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,10 +19,12 @@ import javax.persistence.Table;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "problemz")
+@NoArgsConstructor
+@Getter
+@Setter
+@SuperBuilder
 public class ProblemEntity {
 
     @Id

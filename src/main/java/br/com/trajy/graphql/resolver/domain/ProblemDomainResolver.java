@@ -5,12 +5,12 @@ import static java.lang.Long.valueOf;
 import br.com.trajy.graphql.assembly.ProblemAssembly;
 import br.com.trajy.graphql.codegen.tad.Problem;
 import br.com.trajy.graphql.codegen.tad.ProblemInput;
-import br.com.trajy.graphql.codegen.tad.ProblemResponse;
 import br.com.trajy.graphql.service.ProblemService;
 import com.netflix.graphql.dgs.DgsComponent;
 import com.netflix.graphql.dgs.DgsData;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.ExtensionMethod;
+import org.springframework.web.bind.annotation.RequestHeader;
 import java.util.List;
 
 @ExtensionMethod({
@@ -33,9 +33,8 @@ public class ProblemDomainResolver {
     }
 
     @DgsData(parentType = "ProblemDomainMutation")
-    public ProblemResponse createProblem(ProblemInput input) {
-        //TODO - to implement
-        return ProblemResponse.builder().build();
+    public Problem createProblem(ProblemInput input, @RequestHeader String authorization) {
+        return service.save(input.problemToEntity(), authorization).problemToGraphQlModel();
     }
 
     public List<Problem> findByKeyword(String keyword) {
