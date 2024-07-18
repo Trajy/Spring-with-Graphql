@@ -1,5 +1,7 @@
 package br.com.trajy.graphql.resolver.domain;
 
+import static java.lang.Long.valueOf;
+
 import br.com.trajy.graphql.assembly.SolutionAssembly;
 import br.com.trajy.graphql.codegen.tad.Solution;
 import br.com.trajy.graphql.codegen.tad.SolutionInput;
@@ -10,6 +12,7 @@ import com.netflix.graphql.dgs.DgsComponent;
 import com.netflix.graphql.dgs.DgsData;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.ExtensionMethod;
+import org.springframework.web.bind.annotation.RequestHeader;
 import java.util.List;
 
 @ExtensionMethod({
@@ -23,20 +26,22 @@ public class SolutionDomainResolver {
 
     @DgsData(parentType =  "SolutionDomainQuery")
     public Solution solutionDetail(String id) {
-        //TODO - to implement
-        return Solution.builder().build();
+        return service.findById(valueOf(id)).solutionToGraphQlModel();
     }
 
     @DgsData(parentType = "SolutionDomainMutation")
-    public SolutionResponse createSolution(SolutionInput input) {
-        //TODO - to implement
-        return SolutionResponse.builder().build();
+    public Solution createSolution(SolutionInput input, @RequestHeader String authorization) {
+        return service.save(input.solutionToEntity(), authorization).solutionToGraphQlModel();
     }
 
     @DgsData(parentType = "SolutionDomainMutation")
-    public SolutionResponse voteSolution(SolutionVoteInput input) {
-        //TODO - to implement
-        return SolutionResponse.builder().build();
+    public Solution voteSolution(SolutionVoteInput input) {
+        if (input.getVoteAsGood()) {
+            service.incrementGoodVote(valueOf(input.getSolutionId()));
+        } else {
+            service.incrementBadVote(valueOf(input.getSolutionId()));
+        }
+        return this.solutionDetail(input.getSolutionId());
     }
 
     public List<Solution> findByKeyword(String keyword) {

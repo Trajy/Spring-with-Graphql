@@ -3,6 +3,6 @@ type SolutionDomainQuery {
 }
 
 type SolutionDomainMutation {
-    createSolution(input: SolutionInput): SolutionResponse!
-    voteSolution(input: SolutionVoteInput): SolutionResponse!
+    createSolution(input: SolutionInput): Solution!
+    voteSolution(input: SolutionVoteInput): Solution!
 }

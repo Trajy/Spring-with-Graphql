@@ -19,7 +19,7 @@ public class QueryResolver {
     @Getter(onMethod_ = { @DgsQuery(field = "problemDomain"), @DgsMutation(field = "problemDomain") })
     private final ProblemDomainResolver problemDomainResolver;
 
-    @Getter(onMethod_ = @DgsQuery(field = "solutionDomain"))
+    @Getter(onMethod_ = { @DgsQuery(field = "solutionDomain"), @DgsMutation(field = "solutionDomain") })
     private final SolutionDomainResolver solutionDomainResolver;
 
 }
