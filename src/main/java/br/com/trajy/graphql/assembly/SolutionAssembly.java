@@ -1,5 +1,6 @@
 package br.com.trajy.graphql.assembly;
 
+import static br.com.trajy.graphql.util.TrainWreckUtil.nullIfWreck;
 import static java.util.stream.Collectors.toList;
 
 import br.com.trajy.graphql.codegen.tad.Solution;
@@ -18,8 +19,7 @@ import java.util.List;
 public class SolutionAssembly {
 
     public Solution solutionToGraphQlModel(SolutionEntity entity) {
-
-        return Solution.builder()
+        return nullIfWreck(() -> Solution.builder()
                 .setId(entity.getId().toString())
                 .setContent(entity.getContent())
                 .setCategory(entity.getCategory())
@@ -28,11 +28,12 @@ public class SolutionAssembly {
                 .setAuthor(entity.getAuthor().userToGraphQlModel())
                 .setProblem(entity.getProblem().problemToGraphQlModel())
                 .setCreatedAt(entity.getCreationTimestamp())
-                .build();
+                .build()
+        );
     }
 
     public List<Solution> solutionzToGraphQlModel(List<SolutionEntity> entities) {
-        return entities.stream().map(SolutionAssembly::solutionToGraphQlModel).collect(toList());
+        return nullIfWreck(() -> (entities).stream().map(SolutionAssembly::solutionToGraphQlModel).collect(toList()));
     }
 
 }

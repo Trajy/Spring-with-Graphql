@@ -1,6 +1,6 @@
 package br.com.trajy.graphql.assembly;
 
-import static java.util.Objects.isNull;
+import static br.com.trajy.graphql.util.TrainWreckUtil.nullIfWreck;
 
 import br.com.trajy.graphql.codegen.tad.User;
 import br.com.trajy.graphql.codegen.tad.UserAuthToken;
@@ -21,41 +21,38 @@ import lombok.experimental.UtilityClass;
 public class UserAssembly {
 
     public UserResponse userResponseTransientToGraphQlModel(UserTransient transientModel) {
-        return UserResponse.builder()
+        return nullIfWreck(() -> UserResponse.builder()
                 .setUser(userToGraphQlModel(transientModel.getUser()))
                 .setAuthToken(userTokenToGraphQlModel(transientModel.getUserToken()))
-                .build();
+                .build()
+        );
     }
 
     public User userToGraphQlModel(UserEntity entity) {
-        if(isNull(entity)) {
-            return null;
-        }
-        User user = User.builder()
+        preventCiclicReference(entity);
+        return nullIfWreck(() -> User.builder()
                 .setId(entity.getId().toStringNullSafe())
                 .setUsername(entity.getUsername())
                 .setDisplayName(entity.getDisplayName())
                 .setEmail(entity.getEmail())
                 .setAvatar(entity.getAvatarUrl())
+                .setProblemz(entity.getProblemz().problemzToGraphQlModel())
                 .setSolutionz(entity.getSolutionz().solutionzToGraphQlModel())
                 .setCreatedAt(entity.getCreationTimestamp())
-                .build();
-                if(entity.getProblemz() != null) {
-                    entity.getProblemz().forEach(problemEntity -> {
-                        if (problemEntity.getAuthor() != null) {
-                            problemEntity.setAuthor(null);
-                        }
-                    });
-                    user.setProblemz(entity.getProblemz().problemzToGraphQlModel());
-                }
-        return user;
+                .build()
+        );
     }
 
     public UserAuthToken userTokenToGraphQlModel(UserTokenEntity entity) {
-        return UserAuthToken.builder()
+        return nullIfWreck(() -> UserAuthToken.builder()
                 .setToken(entity.getAuthToken())
                 .setExpiryTime(entity.getExpiryTimestamp())
-                .build();
+                .build()
+        );
+    }
+
+    private void preventCiclicReference(UserEntity entity) {
+        nullIfWreck(() -> entity.getProblemz().forEach(problemEntity -> problemEntity.setAuthor(null)));
     }
 
 }
