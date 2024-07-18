@@ -13,10 +13,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class QueryResolver {
 
-    @Getter(onMethod_ = { @DgsQuery(field = "userDomain"), @DgsMutation(field = "userDomain")})
+    @Getter(onMethod_ = { @DgsQuery(field = "userDomain"), @DgsMutation(field = "userDomain") })
     private final UserDomainResolver userDomainResolver;
 
-    @Getter(onMethod_ = @DgsQuery(field = "problemDomain"))
+    @Getter(onMethod_ = { @DgsQuery(field = "problemDomain"), @DgsMutation(field = "problemDomain") })
     private final ProblemDomainResolver problemDomainResolver;
 
     @Getter(onMethod_ = @DgsQuery(field = "solutionDomain"))
