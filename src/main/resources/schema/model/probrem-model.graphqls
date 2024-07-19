@@ -19,3 +19,12 @@ input ProblemInput {
     content: String!
     tags: [String!]!
 }
+
+type ProblemSubscriptionModel {
+    topic: ProblemSubscriptionTopic!
+    model: Problem!
+}
+
+enum ProblemSubscriptionTopic {
+    ADD
+}
