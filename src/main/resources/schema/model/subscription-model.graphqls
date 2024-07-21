@@ -1,0 +1,8 @@
+type Message {
+    topic: String!
+    value: MessageValue!
+}
+
+union MessageValue
+    = Problem
+    | Solution

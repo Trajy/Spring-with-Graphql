@@ -12,7 +12,5 @@ type Mutation {
 }
 
 type Subscription {
-    problemSubscribe: ProblemSubscriptionModel!
-    solutionAdded: Solution!
-    solutionVoteChanged(solutionId: ID!): Solution!
+    subscribe: Message!
 }

@@ -1,11 +1,13 @@
 package br.com.trajy.graphql.resolver.domain;
 
+import static br.com.trajy.graphql.codegen.tad.SolutionMessageTopic.ADD;
+import static br.com.trajy.graphql.codegen.tad.SolutionMessageTopic.VOTE;
+import static br.com.trajy.graphql.util.DgsSubscriptionUtil.publish;
 import static java.lang.Long.valueOf;
 
 import br.com.trajy.graphql.assembly.SolutionAssembly;
 import br.com.trajy.graphql.codegen.tad.Solution;
 import br.com.trajy.graphql.codegen.tad.SolutionInput;
-import br.com.trajy.graphql.codegen.tad.SolutionResponse;
 import br.com.trajy.graphql.codegen.tad.SolutionVoteInput;
 import br.com.trajy.graphql.service.SolutionService;
 import com.netflix.graphql.dgs.DgsComponent;
@@ -31,7 +33,7 @@ public class SolutionDomainResolver {
 
     @DgsData(parentType = "SolutionDomainMutation")
     public Solution createSolution(SolutionInput input, @RequestHeader String authorization) {
-        return service.save(input.solutionToEntity(), authorization).solutionToGraphQlModel();
+        return publish(ADD, service.save(input.solutionToEntity(), authorization).solutionToGraphQlModel());
     }
 
     @DgsData(parentType = "SolutionDomainMutation")
@@ -41,7 +43,8 @@ public class SolutionDomainResolver {
         } else {
             service.incrementBadVote(valueOf(input.getSolutionId()));
         }
-        return this.solutionDetail(input.getSolutionId());
+        return publish(VOTE, this.solutionDetail(input.getSolutionId())
+        );
     }
 
     public List<Solution> findByKeyword(String keyword) {
