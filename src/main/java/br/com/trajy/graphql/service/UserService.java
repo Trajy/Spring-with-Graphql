@@ -26,6 +26,10 @@ public class UserService {
 
     private final UserTokenRepository tokenRepository;
 
+    public UserEntity create(UserEntity entity) {
+        return repository.save(entity);
+    }
+
     public UserEntity findMeByToken(String authToken) {
         return repository.findUserByToken(authToken).orElseThrow();
     }

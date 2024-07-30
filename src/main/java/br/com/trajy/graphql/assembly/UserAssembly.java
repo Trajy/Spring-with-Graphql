@@ -1,24 +1,39 @@
 package br.com.trajy.graphql.assembly;
 
 import static br.com.trajy.graphql.util.TrainWreckUtil.nullIfWreck;
+import static java.lang.Boolean.TRUE;
 
 import br.com.trajy.graphql.codegen.tad.User;
 import br.com.trajy.graphql.codegen.tad.UserAuthToken;
+import br.com.trajy.graphql.codegen.tad.UserCreateInput;
 import br.com.trajy.graphql.codegen.tad.UserResponse;
 import br.com.trajy.graphql.model.entity.UserEntity;
 import br.com.trajy.graphql.model.entity.UserTokenEntity;
 import br.com.trajy.graphql.model.transients.UserTransient;
 import br.com.trajy.graphql.util.CommonUtil;
+import br.com.trajy.graphql.util.HashUtil;
 import lombok.experimental.ExtensionMethod;
 import lombok.experimental.UtilityClass;
 
 @ExtensionMethod({
         ProblemAssembly.class,
         SolutionAssembly.class,
+        HashUtil.class,
         CommonUtil.class
 })
 @UtilityClass
 public class UserAssembly {
+
+    public UserEntity userToEntity(UserCreateInput input) {
+        return UserEntity.builder()
+                .username(input.getUsername())
+                .email(input.getEmail())
+                .hashedPassword(input.getPassword().hashPassword())
+                .displayName(input.getDisplayName())
+                .active(TRUE)
+                .avatarUrl(input.getAvatar())
+                .build();
+    }
 
     public UserResponse userResponseTransientToGraphQlModel(UserTransient transientModel) {
         return nullIfWreck(() -> UserResponse.builder()

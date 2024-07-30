@@ -29,9 +29,8 @@ public class UserDomainResolver {
     }
 
     @DgsData(parentType = "UserDomainMutation")
-    public UserResponse createUser(UserCreateInput input) {
-        //TODO - to implement
-        return UserResponse.builder().build();
+    public User create(UserCreateInput input) {
+        return service.create(input.userToEntity()).userToGraphQlModel();
     }
 
     @DgsData(parentType = "UserDomainMutation")
