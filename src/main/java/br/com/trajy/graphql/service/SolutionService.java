@@ -20,17 +20,17 @@ public class SolutionService {
 
     private final UserService userService;
 
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true, rollbackFor = Exception.class)
     public SolutionEntity findById(Long id) {
         return repository.findById(id).orElseThrow();
     }
 
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true, rollbackFor = Exception.class)
     public List<SolutionEntity> findByKeyword(String keyword) {
         return repository.findByKeyword("%".concat(keyword).concat("%"));
     }
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public SolutionEntity save(SolutionEntity entity, String authToken) {
         entity.setAuthor(userService.findMeByToken(authToken));
         entity.setProblem(problemService.findById(nullIfWreck(() -> entity.getProblem().getId())));
@@ -39,7 +39,7 @@ public class SolutionService {
         return repository.save(entity);
     }
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void vote(Long id, boolean asGood) {
         if(asGood) {
             repository.incrementGoodVote(id);

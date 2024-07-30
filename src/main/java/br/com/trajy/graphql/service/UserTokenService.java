@@ -6,12 +6,14 @@ import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import br.com.trajy.graphql.model.entity.UserTokenEntity;
 import br.com.trajy.graphql.repository.UserTokenRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserTokenService {
 
     private UserTokenRepository repository;
 
+    @Transactional(rollbackFor = Exception.class)
     UserTokenEntity refreshToken(Long userId) {
         UserTokenEntity entity = repository.findByUserId(userId)
                 .orElse(UserTokenEntity.builder().userId(userId).build());

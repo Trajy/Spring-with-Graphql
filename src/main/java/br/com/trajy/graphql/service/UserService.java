@@ -24,11 +24,12 @@ public class UserService {
 
     private final UserTokenService userTokenService;
 
+    @Transactional(rollbackFor = Exception.class)
     public UserEntity create(UserEntity entity) {
         return repository.save(entity);
     }
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public Boolean active(Long userId, Boolean isActive) {
         repository.active(userId, isActive);
         UserEntity entity = repository.findById(userId).orElseThrow(
@@ -37,10 +38,12 @@ public class UserService {
         return entity.getActive();
     }
 
+    @Transactional(readOnly = true, rollbackFor = Exception.class)
     public UserEntity findMeByToken(String authToken) {
         return repository.findUserByToken(authToken).orElseThrow();
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public UserTransient login(String username, String password) {
         Optional<UserEntity> user = repository.findByUsernameIgnoreCase(username);
         checkEntityNotFound(user.isEmpty() || !password.isBCriptyMatch(user.get().getHashedPassword()), "Invalid Credentials");
