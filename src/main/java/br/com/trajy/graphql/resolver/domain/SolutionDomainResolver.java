@@ -40,11 +40,7 @@ public class SolutionDomainResolver {
 
     @DgsData(parentType = "SolutionDomainMutation")
     public Solution voteSolution(SolutionVoteInput input) {
-        if (input.getVoteAsGood()) {
-            service.incrementGoodVote(valueOf(input.getSolutionId()));
-        } else {
-            service.incrementBadVote(valueOf(input.getSolutionId()));
-        }
+        service.vote(valueOf(input.getSolutionId()), input.getVoteAsGood());
         return this.solutionDetail(input.getSolutionId()).publish(VOTE);
     }
 

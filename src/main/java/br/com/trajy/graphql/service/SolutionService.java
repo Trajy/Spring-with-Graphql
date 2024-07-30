@@ -40,13 +40,12 @@ public class SolutionService {
     }
 
     @Transactional
-    public void incrementBadVote(Long id) {
+    public void vote(Long id, boolean asGood) {
+        if(asGood) {
+            repository.incrementGoodVote(id);
+            return;
+        }
         repository.incrementBadVote(id);
-    }
-
-    @Transactional
-    public void incrementGoodVote(Long id) {
-        repository.incrementGoodVote(id);
     }
 
 }
