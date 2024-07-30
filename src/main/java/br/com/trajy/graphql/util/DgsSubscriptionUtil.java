@@ -28,7 +28,7 @@ public final class DgsSubscriptionUtil {
      * @param <E> topic of enum with message topics
      * @author Trajy
      */
-    public static <T extends MessageValue, E extends Enum<E>> T publish(E topic, T value) {
+    public static <T extends MessageValue, E extends Enum<E>> T publish(T value, E topic) {
         singletonSink(Enum.class).tryEmitNext(
                 Message.builder()
                         .setTopic(topic.name())
@@ -45,7 +45,7 @@ public final class DgsSubscriptionUtil {
      * @param <E> type of enum with message topics
      * @author Trajy
      */
-    public static <T extends MessageValue, E extends Enum<E>> T publishByType(E topic, T value) {
+    public static <T extends MessageValue, E extends Enum<E>> T publishByType(T value, E topic) {
         singletonSink(topic.getClass()).tryEmitNext(
                 Message.builder()
                         .setTopic(topic.name())

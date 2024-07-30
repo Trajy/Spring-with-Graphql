@@ -1,6 +1,5 @@
 package br.com.trajy.graphql.resolver.domain;
 
-import static br.com.trajy.graphql.util.DgsSubscriptionUtil.publish;
 import static java.lang.Long.valueOf;
 
 import br.com.trajy.graphql.assembly.ProblemAssembly;
@@ -8,6 +7,7 @@ import br.com.trajy.graphql.codegen.tad.Problem;
 import br.com.trajy.graphql.codegen.tad.ProblemInput;
 import br.com.trajy.graphql.codegen.tad.ProblemMessageTopic;
 import br.com.trajy.graphql.service.ProblemService;
+import br.com.trajy.graphql.util.DgsSubscriptionUtil;
 import com.netflix.graphql.dgs.DgsComponent;
 import com.netflix.graphql.dgs.DgsData;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import java.util.List;
 
 @ExtensionMethod({
-        ProblemAssembly.class
+        ProblemAssembly.class,
+        DgsSubscriptionUtil.class
 })
 @DgsComponent
 @RequiredArgsConstructor
@@ -36,10 +37,8 @@ public class ProblemDomainResolver {
 
     @DgsData(parentType = "ProblemDomainMutation")
     public Problem createProblem(ProblemInput input, @RequestHeader String authorization) {
-        return publish(
-                ProblemMessageTopic.ADD,
-                service.save(input.problemToEntity(), authorization).problemToGraphQlModel()
-        );
+        return service.save(input.problemToEntity(), authorization).problemToGraphQlModel()
+                .publish(ProblemMessageTopic.ADD);
     }
 
     public List<Problem> findByKeyword(String keyword) {

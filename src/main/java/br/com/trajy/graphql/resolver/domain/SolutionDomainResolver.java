@@ -2,7 +2,6 @@ package br.com.trajy.graphql.resolver.domain;
 
 import static br.com.trajy.graphql.codegen.tad.SolutionMessageTopic.ADD;
 import static br.com.trajy.graphql.codegen.tad.SolutionMessageTopic.VOTE;
-import static br.com.trajy.graphql.util.DgsSubscriptionUtil.publish;
 import static java.lang.Long.valueOf;
 
 import br.com.trajy.graphql.assembly.SolutionAssembly;
@@ -10,6 +9,7 @@ import br.com.trajy.graphql.codegen.tad.Solution;
 import br.com.trajy.graphql.codegen.tad.SolutionInput;
 import br.com.trajy.graphql.codegen.tad.SolutionVoteInput;
 import br.com.trajy.graphql.service.SolutionService;
+import br.com.trajy.graphql.util.DgsSubscriptionUtil;
 import com.netflix.graphql.dgs.DgsComponent;
 import com.netflix.graphql.dgs.DgsData;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,8 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import java.util.List;
 
 @ExtensionMethod({
-        SolutionAssembly.class
+        SolutionAssembly.class,
+        DgsSubscriptionUtil.class
 })
 @DgsComponent
 @RequiredArgsConstructor
@@ -33,7 +34,8 @@ public class SolutionDomainResolver {
 
     @DgsData(parentType = "SolutionDomainMutation")
     public Solution createSolution(SolutionInput input, @RequestHeader String authorization) {
-        return publish(ADD, service.save(input.solutionToEntity(), authorization).solutionToGraphQlModel());
+        return service.save(input.solutionToEntity(), authorization).solutionToGraphQlModel()
+                .publish(ADD);
     }
 
     @DgsData(parentType = "SolutionDomainMutation")
@@ -43,8 +45,7 @@ public class SolutionDomainResolver {
         } else {
             service.incrementBadVote(valueOf(input.getSolutionId()));
         }
-        return publish(VOTE, this.solutionDetail(input.getSolutionId())
-        );
+        return this.solutionDetail(input.getSolutionId()).publish(VOTE);
     }
 
     public List<Solution> findByKeyword(String keyword) {
