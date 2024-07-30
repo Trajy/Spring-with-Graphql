@@ -4,7 +4,9 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,11 +18,13 @@ import java.net.URL;
 import java.time.OffsetDateTime;
 import java.util.List;
 
+@Entity
+@Table(name = "userz")
+@NoArgsConstructor
 @Getter
 @Setter
 @Data
-@Entity
-@Table(name = "userz")
+@SuperBuilder
 public class UserEntity {
 
     @Id
