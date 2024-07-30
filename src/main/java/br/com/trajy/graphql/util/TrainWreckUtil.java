@@ -1,11 +1,13 @@
 package br.com.trajy.graphql.util;
 
+import static br.com.trajy.graphql.exception.ThrowExceptionUtils.nonInstanciableClazz;
+
 import java.util.function.Supplier;
 
 public final class TrainWreckUtil {
 
     private TrainWreckUtil() {
-        throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
+        nonInstanciableClazz(getClass());
     }
 
     public static <T> T nullIfWreck(Supplier<T> in) {

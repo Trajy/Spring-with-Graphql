@@ -1,6 +1,6 @@
 package br.com.trajy.graphql.service;
 
-import static br.com.trajy.graphql.exception.ConditionUtils.checkEntityNotFound;
+import static br.com.trajy.graphql.exception.ThrowExceptionUtils.checkEntityNotFound;
 
 import br.com.trajy.graphql.model.entity.UserEntity;
 import br.com.trajy.graphql.model.transients.UserTransient;

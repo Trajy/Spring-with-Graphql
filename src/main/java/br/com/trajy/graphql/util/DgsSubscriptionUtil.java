@@ -1,6 +1,7 @@
 package br.com.trajy.graphql.util;
 
-import static br.com.trajy.graphql.exception.ConditionUtils.checkBadRequest;
+import static br.com.trajy.graphql.exception.ThrowExceptionUtils.checkBadRequest;
+import static br.com.trajy.graphql.exception.ThrowExceptionUtils.nonInstanciableClazz;
 import static java.util.Objects.isNull;
 import static reactor.core.publisher.Sinks.many;
 
@@ -19,7 +20,9 @@ public final class DgsSubscriptionUtil {
 
     private static final Map<Class<?>, Many<Message>> sinks = new HashMap<>();
 
-    private DgsSubscriptionUtil() { }
+    private DgsSubscriptionUtil() {
+        nonInstanciableClazz(getClass());
+    }
 
     /**
      * publish general

@@ -3,10 +3,13 @@ package br.com.trajy.graphql.exception;
 
 import com.netflix.graphql.dgs.exceptions.DgsBadRequestException;
 import com.netflix.graphql.dgs.exceptions.DgsEntityNotFoundException;
+import lombok.SneakyThrows;
 
-public class ConditionUtils {
+public class ThrowExceptionUtils {
 
-    private ConditionUtils() { }
+    private ThrowExceptionUtils() {
+        nonInstanciableClazz(getClass());
+    }
 
     public static void checkEntityNotFound(boolean condition, String message) {
         if(condition) {
@@ -18,5 +21,12 @@ public class ConditionUtils {
         if(condition) {
             throw new DgsBadRequestException(message);
         }
+    }
+
+    @SneakyThrows(value = InstantiationException.class)
+    public static void nonInstanciableClazz(Class<?> clazz) {
+        throw new InstantiationException(
+                clazz.getSimpleName().concat(" is a non-instanciable class because it is a utility clazz")
+        );
     }
 }
