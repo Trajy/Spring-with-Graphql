@@ -26,7 +26,7 @@ public class UserService {
 
     private final UserRepository repository;
 
-    private final UserTokenRepository tokenRepository;
+    private final UserTokenService userTokenService;
 
     public UserEntity create(UserEntity entity) {
         return repository.save(entity);
@@ -52,17 +52,8 @@ public class UserService {
         }
         return UserTransient.builder()
                 .user(user.get())
-                .userToken(refreshToken(user.get().getId()))
+                .userToken(userTokenService.refreshToken(user.get().getId()))
                 .build();
-    }
-
-    private UserTokenEntity refreshToken(Long userId) {
-        UserTokenEntity entity = tokenRepository.findByUserId(userId)
-                .orElse(UserTokenEntity.builder().userId(userId).build());
-        entity.setAuthToken(randomAlphabetic(40));
-        entity.setCreationTimestamp(now());
-        entity.setExpiryTimestamp(now().plusHours(2));
-        return tokenRepository.save(entity);
     }
 
 }
