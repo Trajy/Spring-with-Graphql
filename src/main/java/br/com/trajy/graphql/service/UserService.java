@@ -1,15 +1,11 @@
 package br.com.trajy.graphql.service;
 
-import static java.time.OffsetDateTime.now;
-import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+import static br.com.trajy.graphql.exception.ConditionUtils.checkEntityNotFound;
 
 import br.com.trajy.graphql.model.entity.UserEntity;
-import br.com.trajy.graphql.model.entity.UserTokenEntity;
 import br.com.trajy.graphql.model.transients.UserTransient;
 import br.com.trajy.graphql.repository.UserRepository;
-import br.com.trajy.graphql.repository.UserTokenRepository;
 import br.com.trajy.graphql.util.HashUtil;
-import com.netflix.graphql.dgs.exceptions.DgsBadRequestException;
 import com.netflix.graphql.dgs.exceptions.DgsEntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.ExtensionMethod;
@@ -47,9 +43,7 @@ public class UserService {
 
     public UserTransient login(String username, String password) {
         Optional<UserEntity> user = repository.findByUsernameIgnoreCase(username);
-        if(user.isEmpty() || !password.isBCriptyMatch(user.get().getHashedPassword())) {
-            throw new DgsBadRequestException("Invalid Credentials");
-        }
+        checkEntityNotFound(user.isEmpty() || !password.isBCriptyMatch(user.get().getHashedPassword()), "Invalid Credentials");
         return UserTransient.builder()
                 .user(user.get())
                 .userToken(userTokenService.refreshToken(user.get().getId()))

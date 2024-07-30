@@ -1,11 +1,11 @@
 package br.com.trajy.graphql.util;
 
+import static br.com.trajy.graphql.exception.ConditionUtils.checkBadRequest;
 import static java.util.Objects.isNull;
 import static reactor.core.publisher.Sinks.many;
 
 import br.com.trajy.graphql.codegen.tad.Message;
 import br.com.trajy.graphql.codegen.tad.MessageValue;
-import com.netflix.graphql.dgs.exceptions.DgsBadRequestException;
 import org.reactivestreams.Publisher;
 import reactor.core.publisher.Sinks.Many;
 import java.util.HashMap;
@@ -74,9 +74,7 @@ public final class DgsSubscriptionUtil {
     }
 
     private static <E extends Enum<E>> Many<Message> singletonSink(Class<E> topicClazz) {
-        if(isNull(topicClazz)) {
-            throw new DgsBadRequestException("Subscribe topic clazz is required");
-        }
+        checkBadRequest(isNull(topicClazz), "Subscribe topic clazz is required");
         Many<Message> sink = sinks.get(topicClazz);
         if(isNull(sink)) {
             sink = many().multicast().onBackpressureBuffer();
