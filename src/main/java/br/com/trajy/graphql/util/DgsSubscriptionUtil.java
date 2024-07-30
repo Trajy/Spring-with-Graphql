@@ -34,7 +34,7 @@ public final class DgsSubscriptionUtil {
                         .setTopic(topic.name())
                         .setValue(value)
                         .build()
-        ).orThrow();
+        );
         return value;
     }
 
@@ -51,7 +51,7 @@ public final class DgsSubscriptionUtil {
                         .setTopic(topic.name())
                         .setValue(value)
                         .build()
-        ).orThrow();
+        );
         return value;
     }
 
