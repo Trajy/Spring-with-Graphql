@@ -9,10 +9,12 @@ import br.com.trajy.graphql.model.transients.UserTransient;
 import br.com.trajy.graphql.repository.UserRepository;
 import br.com.trajy.graphql.repository.UserTokenRepository;
 import br.com.trajy.graphql.util.HashUtil;
+import com.netflix.graphql.dgs.exceptions.DgsBadRequestException;
+import com.netflix.graphql.dgs.exceptions.DgsEntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import lombok.experimental.ExtensionMethod;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @ExtensionMethod({
@@ -30,15 +32,23 @@ public class UserService {
         return repository.save(entity);
     }
 
+    @Transactional
+    public Boolean active(Long userId, Boolean isActive) {
+        repository.active(userId, isActive);
+        UserEntity entity = repository.findById(userId).orElseThrow(
+                () -> new DgsEntityNotFoundException("Invalid user id")
+        );
+        return entity.getActive();
+    }
+
     public UserEntity findMeByToken(String authToken) {
         return repository.findUserByToken(authToken).orElseThrow();
     }
 
-    @SneakyThrows(value = IllegalAccessException.class)
     public UserTransient login(String username, String password) {
         Optional<UserEntity> user = repository.findByUsernameIgnoreCase(username);
         if(user.isEmpty() || !password.isBCriptyMatch(user.get().getHashedPassword())) {
-            throw new IllegalAccessException("Invalid Credentials");
+            throw new DgsBadRequestException("Invalid Credentials");
         }
         return UserTransient.builder()
                 .user(user.get())

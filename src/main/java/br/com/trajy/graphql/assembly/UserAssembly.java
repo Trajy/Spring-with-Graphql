@@ -4,6 +4,7 @@ import static br.com.trajy.graphql.util.TrainWreckUtil.nullIfWreck;
 import static java.lang.Boolean.TRUE;
 
 import br.com.trajy.graphql.codegen.tad.User;
+import br.com.trajy.graphql.codegen.tad.UserActivationResponse;
 import br.com.trajy.graphql.codegen.tad.UserAuthToken;
 import br.com.trajy.graphql.codegen.tad.UserCreateInput;
 import br.com.trajy.graphql.codegen.tad.UserResponse;
@@ -23,6 +24,10 @@ import lombok.experimental.UtilityClass;
 })
 @UtilityClass
 public class UserAssembly {
+
+    public UserActivationResponse boolToActivationResponse(Boolean isActivate) {
+        return UserActivationResponse.builder().setIsActive(isActivate).build();
+    }
 
     public UserEntity userToEntity(UserCreateInput input) {
         return UserEntity.builder()

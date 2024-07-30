@@ -5,5 +5,5 @@ type UserDomainQuery {
 type UserDomainMutation {
     create(input: UserCreateInput): UserResponse!
     userLogin(input: UserLoginInput): UserResponse!
-    userActivation(input: UserActivationInput): UserActivationResponse!
+    active(input: UserActivationInput): UserActivationResponse!
 }

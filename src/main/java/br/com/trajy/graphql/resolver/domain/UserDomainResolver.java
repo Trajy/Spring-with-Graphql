@@ -1,5 +1,7 @@
 package br.com.trajy.graphql.resolver.domain;
 
+import static java.lang.Long.valueOf;
+
 import br.com.trajy.graphql.assembly.UserAssembly;
 import br.com.trajy.graphql.codegen.tad.User;
 import br.com.trajy.graphql.codegen.tad.UserActivationInput;
@@ -23,9 +25,8 @@ public class UserDomainResolver {
     private final UserService service;
 
     @DgsData(parentType = "UserDomainQuery")
-    public User me() {
-        //TODO - to implement
-        return User.builder().build();
+    public User me(String authorization) {
+        return service.findMeByToken(authorization).userToGraphQlModel();
     }
 
     @DgsData(parentType = "UserDomainMutation")
@@ -40,9 +41,8 @@ public class UserDomainResolver {
     }
 
     @DgsData(parentType = "UserDomainMutation")
-    public UserActivationResponse userActivation(UserActivationInput input) {
-        //TODO - to implement
-        return UserActivationResponse.builder().build();
+    public UserActivationResponse active(UserActivationInput input) {
+        return service.active(valueOf(input.getUserId()), input.getActive()).boolToActivationResponse();
     }
 
 }
